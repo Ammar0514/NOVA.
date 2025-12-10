@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nova — Page Title</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-theme="light">
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nova — Water & Rain Monitor</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- optional -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Meta for theme-color on mobile -->
+  <meta name="theme-color" content="#ffffff" id="meta-theme-color">
+</head>
+<body data-theme="light">
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-left">
+          <div class="logo-shape">N</div>
+          <div class="brand-text">
+            <div class="brand-name">Nova</div>
+            <div class="brand-tag">A single drop can contribute to many</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#how" class="nav-link">How it Works</a>
+        <a href="#monitor" class="nav-link">Live Monitor</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#history" class="nav-link">History</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn ghost" id="themeBtn">Theme</button>
+        <button class="btn" id="signinBtn">Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Full-bleed -->
+  <section id="home" class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <h1>Smart Water & Rain Monitoring</h1>
+        <p class="lead">Protect your home and resources with Nova — local monitoring, real-time alerts and servo control for optimal water management.</p>
+
+        <div class="hero-cta">
+          <button class="btn primary" id="connectUsbBtn"><i class="fas fa-plug"></i> Connect USB</button>
+          <button class="btn outline" id="simulateBtn">Simulate Data</button>
+        </div>
+
+        <div class="hero-info-cards">
+          <div class="card small">
+            <div class="card-title">Status</div>
+            <div class="card-value" id="statusValue">Disconnected</div>
+          </div>
+          <div class="card small">
+            <div class="card-title">Temp</div>
+            <div class="card-value" id="tempValue">— °C</div>
+          </div>
+          <div class="card small">
+            <div class="card-title">Weather</div>
+            <div class="card-value" id="weatherValue">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="https://i.ibb.co/5WbLnnjd/Gemini-Generated-Image-d8u7d4d8u7d4d8u7.png" alt="Nova water hero" class="hero-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section container">
+    <div class="two-col">
+      <div>
+        <h2>About Nova</h2>
+        <p>Nova builds smart, local-first water monitoring systems that let you watch water level, detect rain, and control actuators like servo motors. Our aim is to create simple integrations for Arduino-based projects with a clean web interface you can run on a local machine.</p>
+      </div>
+      <div>
+        <h3>Sign up to get started</h3>
+        <p>Create a free account to store settings in your browser and manage local alerts.</p>
+        <button class="btn" id="signupBtn">Sign Up</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="section pale">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fas fa-cloud-rain fa-2x"></i>
+          <h4>Rain Detection</h4>
+          <p>Detect rain and trigger automated responses for protection.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-tint fa-2x"></i>
+          <h4>Water Level</h4>
+          <p>Multiple level sensing — low, medium, high, full — to prevent overflow.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-cog fa-2x"></i>
+          <h4>Servo Control</h4>
+          <p>Smooth servo control for lids/valves with open/close slider.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-bell fa-2x"></i>
+          <h4>Local Alerts</h4>
+          <p>Create thresholds and receive browser-local alerts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live monitor -->
+  <section id="monitor" class="section container">
+    <div class="monitor-grid">
+      <!-- left: status cards + servo -->
+      <div class="panel">
+        <h3>Live Monitor</h3>
+        <div class="status-cards">
+          <div class="card">
+            <div class="card-title">Water Level</div>
+            <div id="levelCard" class="card-value large">75%     </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Rain</div>
+            <div id="rainCard" class="card-value large">Yes</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Servo</div>
+            <div class="servo-control">
+              <input type="range" min="0" max="100" value="0" id="servoSlider">
+              <div class="servo-labels">
+                <span id="servoState">Closed</span>
+                <button class="btn small" id="servoOpenBtn">Open</button>
+                <button class="btn small ghost" id="servoCloseBtn">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="device-info">
+          <h4>Device Info</h4>
+          <ul>
+            <li><strong>Device: Redmi Note 5 Pro</strong> <span id="deviceName"</span></li>
+            <li><strong>Vendor ID: 0x2717</strong> <span id="vendorId"</span></li>
+            <li><strong>Product ID: 0xFF88</strong> <span id="productId"</span></li>
+            <li><strong>Last Update: Active</strong> <span id="lastUpdate"</span></li>
+          </ul>
+        </div>
+      </div>
+      
+      <section class="page">
+  <h2>Live Monitoring</h2>
+
+  <div class="monitor-box">
+    <p><strong>Temperature:</strong> <span id="temp">27°C</span></p>
+    <p><strong>Humidity:</strong> <span id="hum">63%</span></p>
+    <p><strong>Sound Level:</strong> <span id="sound">480</span></p>
+    <p><strong>Servo Status:</strong> <span id="servo">Open</span></p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+<section class="page">
+  <h2>Connected Devices</h2>
+
+  <div class="card">
+    <h3>Arduino UNO</h3>
+    <p>Status: <span class="status online">Online</span></p>
+    <p>Location: Water Tank Area</p>
+  </div>
+
+  <div class="card">
+    <h3>Sound Sensor</h3>
+    <p>Status: <span class="status offline">Offline</span></p>
+    <p>Threshold: 500</p>
+  </div>
+
+  <div class="card">
+    <h3>DHT11 Sensor</h3>
+    <p>Status: <span class="status online">Online</span></p>
+    <p>Temperature: 27°C</p>
+    <p>Humidity: 63%</p>
+  </div>
+
+  <div class="card">
+    <h3>Servo Motor</h3>
+    <p>Status: <span class="status online">Online</span></p>
+    <p>Action: Controlled by Sound Sensor</p>
+  </div>
+</section>
+
+      <!-- right: quick actions + alerts + settings -->
+      <aside class="panel side">
+        <div class="box">
+          <h4>Quick Actions</h4>
+          <button class="btn" id="downloadSnapshot">Download Snapshot</button>
+          <button class="btn ghost" id="addDevice">Add Device</button>
+        </div>
+
+        <div class="box">
+          <h4>Theme & Settings</h4>
+          <label for="themeSelect">Choose Theme</label>
+          <select id="themeSelect">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="aqua">Aqua</option>
+            <option value="amazon">Amazon-style</option>
+          </select>
+          <div style="margin-top:10px">
+            <label>Temp alert threshold °C</label>
+            <input type="number" id="tempThreshold" placeholder="e.g., 35">
+            <button class="btn small" id="setThreshold">Set</button>
+          </div>
+        </div>
+
+        <div class="box">
+          <h4>Alerts & Rules</h4>
+          <div id="alertsList">No alerts</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2>Project Features</h2>
+      <div class="feature-cards">
+        <div class="card">
+          <h4>Local-first</h4>
+          <p>Runs in your browser with optional USB connect to Arduino — no cloud required.</p>
+        </div>
+        <div class="card">
+          <h4>Extensible</h4>
+          <p>Add sensors and actuators easily; open-source friendly.</p>
+        </div>
+        <div class="card">
+          <h4>Friendly UI</h4>
+          <p>Clear status, quick actions and logs for debugging and demonstration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event History -->
+  <section id="history" class="section pale">
+    <div class="container">
+      <h2>Event History</h2>
+      <div class="history-controls">
+        <input type="search" id="historySearch" placeholder="Search events">
+        <button class="btn" id="exportHistory">Export</button>
+        <button class="btn ghost" id="clearHistory">Clear</button>
+      </div>
+
+      <div class="history-table-wrap">
+        <table class="history-table" id="historyTable">
+          <thead>
+            <tr>
+              <th>Date & Time</th>
+              <th>Device</th>
+              <th>Temp (°C)</th>
+              <th>Level</th>
+              <th>Rain</th>
+              <th>Servo</th>
+              <th>Raw</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- Sign In / Sign Up modal (demo localStorage) -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" id="closeAuth">&times;</button>
+      <div class="modal-body">
+        <h3 id="authTitle">Sign In</h3>
+
+        <form id="authForm">
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" id="authEmail" required>
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input type="password" id="authPassword" required>
+          </div>
+
+          <div class="auth-actions">
+            <button class="btn" type="submit" id="authSubmit">Sign In</button>
+            <button class="btn ghost" id="switchAuth" type="button">Switch to Sign Up</button>
+          </div>
+          <div id="authMsg" class="muted small"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova - Water & Rain Monitor</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Link to CSS file -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- head + header -->
+<section class="container two-col">
+  <div>
+    <h2>About Nova</h2>
+    <p>Nova builds smart, local-first water monitoring systems that let you watch water level, detect rain, and control actuators like servo motors. Our aim is to create simple integrations for Arduino-based projects with a clean web interface you can run on a local machine.</p>
+  </div>
+  <div>
+    <h3>Sign up to get started</h3>
+    <p>Create a free account to store settings in your browser and manage local alerts.</p>
+    <a class="btn" href="signup.html">Sign Up</a>
+  </div>
+</section>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+
+
+<!-- Wavy Divider -->
+<svg class="divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+  <path d="M0,0V46.29c47.79,22,103.63,29,158,18,70-14,136-47,207-42,73,5,140,48,213,58,85,12,170-17,255-37,82-19,168-22,250-3,53,12,104,35,158,35V0Z" fill="var(--primary)"></path>
+</svg>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="contact-left">
+    <h2 class="section-title">Get in Touch</h2>
+    <form class="vertical-form" action="https://submit-form.com/mdL6mrCeq">
+      <label for="first-name">First name</label>
+      <input id="first-name" name="first-name" type="text" placeholder="John" />
+      
+      <label for="last-name">Last name</label>
+      <input id="last-name" name="last-name" type="text" placeholder="Doe" />
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" cols="15" rows="5" placeholder="Your message here..."></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="contact-right">
+    <img src="https://i.ibb.co/YTjKWLRF/unnamed.jpg" alt="Contact Image">
+  </div>
+</section>
+
+<!-- Terms & Conditions -->
+<section class="terms-section">
+  <h2 class="section-title">Terms & Conditions</h2>
+  <p>
+    By using Nova's services and monitoring devices, you agree to adhere to all guidelines, follow safety precautions, and acknowledge that our systems provide monitoring support only. Unauthorized tampering, redistribution, or reverse engineering is prohibited. Nova is not liable for damages resulting from improper usage of the devices.
+  </p>
+</section>
+
+
+<!-- footer.html (copy to bottom of each page) -->
+<footer class="site-footer" id="siteFooter">
+  <div class="container footer-grid">
+    <div>
+      <h3>Nova</h3>
+      <p>Local Dashboard • Arduino • Offline-first</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="monitor.html">Live Monitor</a><br>
+      <a href="features.html">Features</a><br>
+      <a href="history.html">History</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="about.html">About</a><br>
+      <a href="terms.html">Terms</a><br>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-right">
+      <div class="footer-actions">
+        <a class="btn" href="login.html" id="logoutBtn">Logout</a>
+      </div>
+      <div class="copyright">© <span id="year"></span> Nova</div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+<!-- include common head -->
+<h1 style="text-align:center;margin-top:36px">Nova — Dashboard</h1>
+</section>
+
+<!-- include footer (paste footer.html) -->
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+<!-- head + header -->
+<section class="container" style="max-width:480px;margin:40px auto">
+  <h2>Sign In</h2>
+  <form id="signinForm">
+    <label>Email</label>
+    <input id="authEmail" type="email" required>
+    <label>Password</label>
+    <input id="authPassword" type="password" required>
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Sign In</button>
+      <a class="btn ghost" href="signup.html">Sign Up</a>
+    </div>
+    <div id="authMsg" style="margin-top:10px;color:var(--muted)"></div>
+  </form>
+</section>
+<script>
+document.getElementById('signinForm')?.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  const pw = document.getElementById('authPassword').value;
+  const users = JSON.parse(localStorage.getItem('nova_users')||'{}');
+  const authMsg = document.getElementById('authMsg');
+  if(!users[email] || users[email].password !== pw){ authMsg.textContent = 'Invalid credentials'; return; }
+  localStorage.setItem('nova_user', email);
+  authMsg.textContent = 'Signed in — redirecting...';
+  setTimeout(()=> location.href = 'index.html', 700);
+});
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+<!-- head + header -->
+<section class="container" style="max-width:480px;margin:40px auto">
+  <h2>Create Account</h2>
+  <form id="signupForm">
+    <label>Email</label>
+    <input id="suEmail" type="email" required>
+    <label>Password</label>
+    <input id="suPassword" type="password" required>
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Create Account</button>
+      <a class="btn ghost" href="login.html">Sign In</a>
+    </div>
+    <div id="signupMsg" style="margin-top:10px;color:var(--muted)"></div>
+  </form>
+</section>
+<script>
+document.getElementById('signupForm')?.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const email = document.getElementById('suEmail').value.trim();
+  const pw = document.getElementById('suPassword').value;
+  const users = JSON.parse(localStorage.getItem('nova_users')||'{}');
+  const signupMsg = document.getElementById('signupMsg');
+  if(users[email]){ signupMsg.textContent = 'User already exists'; return; }
+  users[email] = { password: pw, created: Date.now() };
+  localStorage.setItem('nova_users', JSON.stringify(users));
+  signupMsg.textContent = 'Account created — redirecting to sign in...';
+  setTimeout(()=> location.href = 'login.html', 900);
+});
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+ 
+<!-- head + header -->
+<section class="container">
+  <h2>Blog</h2>
+  <article class="card">
+    <h3>Getting started with Nova</h3>
+    <p>In today’s world, water conservation and smart automation have become essential. Whether it’s managing irrigation in farms, protecting stored water from contamination, or monitoring environmental conditions, technology plays a major role in simplifying these tasks. Our latest project — the Smart Water Management System using Arduino — combines sensors, automation, and a web dashboard to create a system that reacts intelligently to the environment.
+
+The heart of this system is an Arduino microcontroller, connected to various sensors including a DHT11 temperature and humidity sensor, sound sensor, and a rain drop sensor. These sensors constantly collect real-time data from the surroundings. This information is not only used for decision-making by the Arduino but is also sent to a custom-built website where users can view all readings live.
+
+One of the most interesting parts of this project is the servo motor automation. The servo acts based on conditions such as sound intensity or rainfall. For example, when the sound sensor detects a reading above 500, the system considers it as a trigger and the servo automatically opens. Similarly, when the rain sensor detects moderate or heavy rain, the servo reacts as well. This feature makes the system ideal for applications like automatic tank covers, irrigation control, or rain-protection mechanisms.
+
+To make the project even more interactive, we developed a web dashboard where users can see everything happening inside the system. The website displays the current temperature, humidity, sound level, rain intensity, and whether the servo is open or closed. The dashboard updates in real time, giving users a clear picture of the system’s status without needing to physically check the hardware.
+
+This combination of hardware and software demonstrates how simple electronic components can be turned into a smart, automated solution for everyday problems. The project is easy to expand as well — more sensors, data logging, WiFi connectivity, or AI-based predictions can be added in the future.
+
+Our Smart Water Management System highlights how technology can make water handling smarter, safer, and more efficient. With automation, real-time monitoring, and a user-friendly interface, the project sets a strong foundation for future smart home and environmental applications.</p>
+    <a href="#" class="btn"></a>
+  </article>
+</section>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
